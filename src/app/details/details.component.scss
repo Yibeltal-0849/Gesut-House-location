@@ -1,0 +1,225 @@
+// Variables
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$_spacing-unit: 1rem;
+$_border-radius: 0.5rem;
+$_text-color: #2d3748;
+$_border-color: #e2e8f0;
+$_transition: all 0.2s ease-in-out;
+
+$_primary-color: #4a6bff;
+$_text-color: #2d3748;
+$_light-text: #718096;
+$_border-color: #e2e8f0;
+$_spacing-unit: 1rem;
+$_border-radius: 0.5rem;
+$_shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$_transition: all 0.2s ease-in-out;
+
+$color-primary: #3f51b5;
+$color-primary-light: #757de8;
+$color-primary-dark: #002984;
+$color-text: #212121;
+$color-text-light: #757575;
+$color-background: #f5f5f5;
+$color-white: #ffffff;
+$color-border: #e0e0e0;
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Base styles
+article {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  color: $color-text;
+
+  @include respond-to($breakpoint-tablet) {
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+  }
+}
+
+// Listing photo
+.listing-photo {
+  width: 100%;
+  height: auto;
+  border-radius: $border-radius;
+  object-fit: cover;
+  box-shadow: $shadow;
+  aspect-ratio: 16 / 9;
+
+  @include respond-to($breakpoint-tablet) {
+    grid-column: 1 / -1;
+    max-height: 400px;
+  }
+}
+
+// Listing description
+.listing-description {
+  @include respond-to($breakpoint-tablet) {
+    grid-column: 1;
+  }
+
+  .listing-heading {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: $color-primary-dark;
+  }
+
+  .listing-location {
+    font-size: 1.1rem;
+    color: $color-text-light;
+    margin-bottom: 1rem;
+  }
+}
+
+// Listing features
+.listing-features {
+  background: $color-white;
+  padding: 1.5rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+
+  @include respond-to($breakpoint-tablet) {
+    grid-column: 1;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: $color-primary;
+    border-bottom: 2px solid $color-primary-light;
+    padding-bottom: 0.5rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid $color-border;
+      font-size: 1rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// Listing apply form
+.listing-apply {
+  .section-heading {
+    color: #757de8;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $_spacing-unit;
+    background-color: white;
+    padding: $_spacing-unit * 1.5;
+    border-radius: $_border-radius;
+    box-shadow: $_shadow;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $_text-color;
+  }
+
+  input {
+    padding: 0.75rem;
+    border: 1px solid $_border-color;
+    border-radius: $_border-radius;
+    font-size: 1rem;
+    transition: $_transition;
+
+    &:focus {
+      outline: none;
+      border-color: $_primary-color;
+      box-shadow: 0 0 0 3px rgba($_primary-color, 0.1);
+    }
+  }
+
+  .primary {
+    background-color: $_primary-color;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: $_border-radius;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $_transition;
+    margin-top: 0.5rem;
+
+    &:hover {
+      background-color: darken($_primary-color, 5%);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background-color: lighten($_primary-color, 25%);
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #0d6efd;
+  background-color: #e8f0fe;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d0e2fd;
+  }
+
+  &:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+  }
+}
+// Responsive adjustments
+@include respond-to($breakpoint-mobile) {
+  .listing-apply {
+    form {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+
+      label {
+        grid-column: 1 / -1;
+      }
+
+      .primary {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}
