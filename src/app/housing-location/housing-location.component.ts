@@ -15,8 +15,12 @@ import { RouterLink, RouterOutlet } from '@angular/router'; // File-level import
     />
     <h2 class="listing-heading">{{ housingLocation.name }}</h2>
     <p class="listing-location">
-      {{ housingLocation.city }}, {{ housingLocation.state }},
-      <a href="{{ housingLocation.location }}">show on map</a>
+      <span class="location-text"
+        >{{ housingLocation.city }}, {{ housingLocation.state }}</span
+      >
+      <span class="map-link"
+        ><a href="{{ housingLocation.location }}">show on map</a></span
+      >
     </p>
     <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
   </section>`,

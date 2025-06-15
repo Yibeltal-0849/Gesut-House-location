@@ -7,7 +7,6 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   padding: 1.5rem;
   max-width: 600px;
-  // margin: 1.5rem auto;
   text-align: center;
   transition: box-shadow 0.3s ease;
 
@@ -32,9 +31,28 @@
   }
 
   .listing-location {
+    display: flex; /* Add this */
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
     color: #666;
     margin-bottom: 1rem;
+
+    .location-text::after {
+      content: ","; /* default comma */
+      margin-right: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column; /* make vertical */
+      text-align: center;
+      gap: 1rem;
+
+      .location-text::after {
+        content: ""; /* remove comma on small screens */
+      }
+    }
   }
 
   a {

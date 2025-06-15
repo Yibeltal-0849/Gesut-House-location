@@ -19,10 +19,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       <section class="listing-description">
         <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
         <p class="listing-location">
-          <span>{{ housingLocation?.city }}, {{ housingLocation?.state }}</span
-          >,
-          <a href="{{ housingLocation?.location }}" target="_blank"
-            >show on map</a
+          <span class="location-text"
+            >{{ housingLocation?.city }}, {{ housingLocation?.state }}</span
+          >
+          <span class="map-link"
+            ><a href="{{ housingLocation?.location }}">show on map</a></span
           >
         </p>
       </section>
